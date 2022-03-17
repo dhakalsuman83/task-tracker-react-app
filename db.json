@@ -13,16 +13,16 @@
       "reminder": false
     },
     {
-      "text": "Take Test",
-      "day": "Monday",
-      "reminder": true,
-      "id": 3
-    },
-    {
       "text": "Glenroy Medical Appointment",
       "day": "March 20th at 2:30PM",
       "reminder": true,
       "id": 4
+    },
+    {
+      "text": "Car Appointment",
+      "day": "20th March at 4PM",
+      "reminder": true,
+      "id": 5
     }
   ]
 }
