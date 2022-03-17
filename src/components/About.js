@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom"
+import Button from "./Button"
 const About = () => {
+    const color='blue'
   return (
       <div>
           <h4>Created by: Suman Dhakal</h4>
-          <h4>Learned from Travese Media</h4>
-          <a href="/">Go Back to main page</a>
+          <h5>Learned from Travese Media</h5>
+          <Link to="/"><Button text="Return to main Page" color='grey'/></Link>
     </div>
   )
 }

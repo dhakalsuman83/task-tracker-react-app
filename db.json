@@ -17,6 +17,12 @@
       "day": "Monday",
       "reminder": true,
       "id": 3
+    },
+    {
+      "text": "Glenroy Medical Appointment",
+      "day": "March 20th at 2:30PM",
+      "reminder": true,
+      "id": 4
     }
   ]
 }

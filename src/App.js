@@ -82,14 +82,17 @@ function App() {
     <Router>
       <div className="container">
         <Header onShow={()=>setShowAddTask(!showAddTask)} showAdd={showAddTask}  />
-        {showAddTask && <AddTask onAdd={addTask}/>}
-        {(tasks.length > 0) ? (
-          <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleRemainder}/>
-        ) : (
-            "No task to Show"
-        )
-        }
+        
         <Routes>
+          <Route path='/' exact element={<>
+            {showAddTask && <AddTask onAdd={addTask}/>}
+            {(tasks.length > 0) ? (
+              <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleRemainder}/>
+              ) : (
+              "No task to Show"
+            )
+          }
+          </>} />
           <Route path='/about' element={<About/>} />
         </Routes>
         <Footer />
