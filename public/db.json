@@ -1,12 +1,6 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "text": "Doctors Appointment",
-      "day": "Feb 5th at 2:30PM",
-      "reminder": false
-    },
-    {
       "id": 2,
       "text": "Meeting at school",
       "day": "Feb 6th at 1:30PM",
@@ -15,14 +9,14 @@
     {
       "text": "Glenroy Medical Appointment",
       "day": "March 20th at 2:30PM",
-      "reminder": true,
+      "reminder": false,
       "id": 4
     },
     {
-      "text": "MAX Employment",
-      "day": "24th March 2022",
+      "text": "Car Appointment",
+      "day": "20th March at 4PM",
       "reminder": true,
-      "id": 6
+      "id": 5
     }
   ]
 }

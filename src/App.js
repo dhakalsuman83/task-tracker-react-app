@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import {BrowserRouter as Router, Routes,Route} from 'react-router-dom'
 import Header from './components/Header';
@@ -7,6 +8,7 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 
 function App() {
+  const api = "http://localhost:5000/tasks"
   const [showAddTask,setShowAddTask]=useState(false)
   const [tasks, setTasks] = useState([])
   
@@ -16,28 +18,34 @@ function App() {
       setTasks(taskFromServer)
     }
         getTask()
-  }, [])
+  },[])
   
   //fetch tasks
   const fetchTasks = async () => {
-    const res= await fetch('http://localhost:5000/tasks');
+    // console.log(process.env.PORT)
+    // const devEnv = process.env.NODE_ENV !== "production"
+    const res= await fetch(`${api}`);
     const data = await res.json()
     return data;
   }
 
   //fetch task
   const fetchTask = async (id) => {
-    const res= await fetch(`http://localhost:5000/tasks/${id}`);
+    // const devEnv = process.env.NODE_ENV !== "production"
+    // const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+    const res= await fetch(`${api}/${id}`);
     const data = await res.json()
     return data;
   }
 
   //Add Task
-  const addTask = async(task) => {
-    const res = await fetch("http://localhost:5000/tasks", {
+  const addTask = async (task) => {
+    // const devEnv = process.env.NODE_ENV !== "production"
+    // const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+    const res = await fetch(`${api}`, {
       method: 'POST',
       headers: {
-        'content-type':'application/json'
+        'content-type': 'application/json'
       },
       body:JSON.stringify(task)
     })
@@ -51,30 +59,33 @@ function App() {
   }
 
   //delete Task
-  const deleteTask = async(id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`
+  const deleteTask = async (id) => {
+    // const devEnv = process.env.NODE_ENV !== "production"
+    // const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+    await fetch(`${api}/${id}`
       , {
-      method: 'DELETE'
+        method: 'DELETE'
     });
-   setTasks(tasks.filter(task=> task.id !=id))
+   setTasks(tasks.filter(task=> task.id !== id))
   }
   
   //Toggle Remainder
   const toggleRemainder = async (id) => {
+    // const devEnv = process.env.NODE_ENV !== "production"
+    // const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
     const taskToToggle = await fetchTask(id);
     const updtask = { ...taskToToggle, reminder: !taskToToggle.reminder }
-    
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+    const res = await fetch(`${api}/${id}`, {
       method: 'PUT',
       headers: {
-        'Content-type':"application/json"
+        'Content-type': "application/json"
       },
       body:JSON.stringify(updtask)
     })
 
     const data = await res.json()
 
-    setTasks(tasks.map(task => task.id == id ? {...task,reminder:!data.reminder}:task
+    setTasks(tasks.map(task => task.id === id ? {...task,reminder:!data.reminder}:task
     ))
   }
 

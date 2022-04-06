@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import Button from "./Button"
 const About = () => {
-    const color='blue'
   return (
       <div>
           <h4>Created by: Suman Dhakal</h4>
